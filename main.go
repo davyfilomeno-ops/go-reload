@@ -56,6 +56,7 @@ func main() {
 	}
 
 	resultat := strings.Join(mots, " ")
+	resultat = corrigerPonctuation(resultat)
 	fmt.Println(resultat)
 
 	err = os.WriteFile("output.txt", []byte(resultat), 0644)
