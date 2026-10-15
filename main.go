@@ -14,7 +14,7 @@ func main() {
 		return
 	}
 
-	mots := strings.Fields(string(texte))
+	mots := apostrophe(strings.Fields(string(texte)))
 	for i := 0; i < len(mots); i++ {
 		nom := ""
 		nombreMots := 1
