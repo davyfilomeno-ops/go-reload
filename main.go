@@ -55,6 +55,8 @@ func main() {
 		i--
 	}
 
+	mots = conversion(mots)
+
 	resultat := strings.Join(mots, " ")
 	resultat = corrigerPonctuation(resultat)
 	fmt.Println(resultat)
