@@ -55,7 +55,18 @@ func main() {
 		i--
 	}
 
-	mots = conversion(mots)
+	for i := 0; i < len(mots); i++ {
+		if i > 0 && (mots[i] == "(hex)" || mots[i] == "(bin)") {
+			if mots[i] == "(hex)" {
+				mots[i-1] = versHex(mots[i-1])
+			} else {
+				mots[i-1] = versBin(mots[i-1])
+			}
+
+			mots = append(mots[:i], mots[i+1:]...)
+			i--
+		}
+	}
 
 	resultat := strings.Join(mots, " ")
 	resultat = corrigerPonctuation(resultat)
