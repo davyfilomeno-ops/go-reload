@@ -1,25 +1,28 @@
-package main 
+package main
 
 func estPonctuation(caractere rune) bool {
-	return caractere == '.' ||
-		caractere == ',' ||
-		caractere == '!' ||
-		caractere == '?' ||
-		caractere == ':' ||
-		caractere == ';'
+	switch caractere {
+	case '.', ',', '!', '?', ':', ';':
+		return true
+	default:
+		return false
+	}
 }
 
 func corrigerPonctuation(texte string) string {
-
 	resultat := ""
 
 	for i := 0; i < len(texte); i++ {
+		caractere := rune(texte[i])
 
-		if texte[i] == ' ' && i+1 < len(texte) && estPonctuation(rune(texte[i+1])) {
-			continue
+		if caractere == ' ' && i+1 < len(texte) {
+			prochainCaractere := rune(texte[i+1])
+			if estPonctuation(prochainCaractere) {
+				continue
+			}
 		}
 
-		resultat += string(texte[i])
+		resultat += string(caractere)
 	}
 
 	return resultat
